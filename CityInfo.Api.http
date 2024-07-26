@@ -1,0 +1,52 @@
+@cityInfo.Api_HostAddress = https://localhost:7224
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@schema=https
+@hostname=localhost
+@port=7224
+@cityId=ca203af8-7127-433e-ae28-9c255a04ed84
+@BearerAuth=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IktldmluIiwiZmFtaWx5X25hbWUiOiJEb2NreCIsImNpdHkiOiJBbnR3ZXJwIiwibmJmIjoxNzIxOTk4NTg3LCJleHAiOjE3MjIwMDIxODcsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjQiLCJhdWQiOiJjaXR5aW5mb2FwaSJ9.KKvBu3Qx6Q32qvsUCpo81atQAXJaadfv0poGGNrOwZw
+
+GET {{schema}}://{{hostname}}:{{port}}/api/v1/cities
+Authorization:{{BearerAuth}}
+###
+GET {{schema}}://{{hostname}}:{{port}}/api/v1/cities/{{cityId}}?includePointOfInterest=true
+Authorization:{{BearerAuth}}
+###
+GET {{schema}}://{{hostname}}:{{port}}/api/v1/cities
+Accept:application/xml
+Authorization:{{BearerAuth}}
+###
+# @name createpoi
+POST {{schema}}://{{hostname}}:{{port}}/api/v2/cities/{{cityId}}/pointsofinterest
+Authorization:{{BearerAuth}}
+Accept:application/json
+Content-Type:application/json
+
+{
+  "name": "A name for testing",
+  "description": "A description for testing"
+}
+###
+@poiid = {{createpoi.response.body.id}}
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities/1/pointsofinterest/{{poiid}}
+Authorization:{{BearerAuth}}
+Accept: application/json
+
+###
+// get a token 
+POST {{schema}}://{{hostname}}:{{port}}/api/authentication/authenticate
+Content-Type: application/json
+
+{
+    "username": "KevinDockx",
+    "password": "This is a relatively long sentence that acts as my password"
+}
+###
+POST {{cityInfo.Api_HostAddress}}/api/authentication/authenticate
+Content-Type: application/json
+
+{
+  //AuthenticationRequestBody
+}
+
+###

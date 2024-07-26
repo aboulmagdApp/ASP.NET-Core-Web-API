@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>cityInfo.Api</name>
+    </assembly>
+    <members>
+        <member name="T:cityInfo.Api.Controllers.AuthenticationController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:cityInfo.Api.Controllers.AuthenticationController.AuthenticationRequestBody">
+            <summary>
+            we won't use this outside of this class, so we can scope it to this namespace
+            </summary>
+        </member>
+        <member name="P:cityInfo.Api.Controllers.AuthenticationController.AuthenticationRequestBody.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:cityInfo.Api.Controllers.AuthenticationController.AuthenticationRequestBody.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.AuthenticationController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.AuthenticationController.Authenticate(cityInfo.Api.Controllers.AuthenticationController.AuthenticationRequestBody)">
+            <summary>
+            
+            </summary>
+            <param name="authenticationRequestBody"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:cityInfo.Api.Controllers.CitiesController">
+            <summary>
+            CitiesController
+            </summary>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.CitiesController.#ctor(cityInfo.Api.Services.ICityInfoRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="cityInfoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.CitiesController.GetCities(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            عمل بحث على جميع المدن 
+            </summary>
+            <param name="name">البحث باسم المدينة</param>
+            <param name="searchQuery">بحث عام</param>
+            <param name="pageNumber">رقم الصفحة</param>
+            <param name="pageSize">اجمالى الصفحات</param>
+            <returns></returns>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.CitiesController.GetCity(System.Guid,System.Boolean)">
+            <summary>
+            الحصول على بيانات المدينة من خلال المعرف الخاص بها
+            </summary>
+            <param name="id">المعرف الخاص بالمدينة</param>
+            <param name="includePointOfInterest">المعالم الرئيسية فى المدينة</param>
+            <returns>استرجاع بيانات المدن بمعالمها او بدون</returns>
+            <response code="200">استرجاع بيانات المدن بنجاح</response>
+        </member>
+        <member name="T:cityInfo.Api.Controllers.FilesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.FilesController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:cityInfo.Api.Controllers.PointsOfInterestController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.#ctor(cityInfo.Api.Services.ICityInfoRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="cityInfoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.GetPointOfInterest(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.GetPointOfInterest(System.Guid,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.CreatePointOfInterest(System.Guid,cityInfo.Api.Models.PointOfInterestForCreationDto)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.UpdatePointOfInterest(System.Guid,System.Int32,cityInfo.Api.Models.PointOfInterestForUpdateDto)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestId"></param>
+            <param name="pointOfInterest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.PartiallyUpdatePointOfInterest(System.Guid,System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{cityInfo.Api.Models.PointOfInterestForUpdateDto})">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestId"></param>
+            <param name="patchDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:cityInfo.Api.Controllers.PointsOfInterestController.DeletePointOfInterest(System.Guid,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:cityInfo.Api.Migrations.initCityInfoDB">
+            <inheritdoc />
+        </member>
+        <member name="M:cityInfo.Api.Migrations.initCityInfoDB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:cityInfo.Api.Migrations.initCityInfoDB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:cityInfo.Api.Migrations.initCityInfoDB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:cityInfo.Api.Migrations.initpoi">
+            <inheritdoc />
+        </member>
+        <member name="M:cityInfo.Api.Migrations.initpoi.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:cityInfo.Api.Migrations.initpoi.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:cityInfo.Api.Migrations.initpoi.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:cityInfo.Api.Models.CityWithoutPointsOfInterestDto">
+            <summary>
+            المدينة بدون المعالم السياحية
+            </summary>
+        </member>
+        <member name="P:cityInfo.Api.Models.CityWithoutPointsOfInterestDto.Id">
+            <summary>
+            معرف المدينة
+            </summary>
+        </member>
+        <member name="P:cityInfo.Api.Models.CityWithoutPointsOfInterestDto.Name">
+            <summary>
+            اسم المدينة
+            </summary>
+        </member>
+        <member name="P:cityInfo.Api.Models.CityWithoutPointsOfInterestDto.Description">
+            <summary>
+            وصف المدينة
+            </summary>
+        </member>
+    </members>
+</doc>
